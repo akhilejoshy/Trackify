@@ -1,1 +1,1 @@
-web: gunicorn Trackify.wsgi:application
+web: gunicorn Trackify.wsgi:application 
