@@ -1,0 +1,34 @@
+{% extends "index.html" %}
+
+{% block title %}Feedback{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-3">Feedback</h1>
+    <hr>
+
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success">{{ message }}</div>
+    {% endfor %}
+    {% endif %}
+
+    <form method="post" class="w-50">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label class="form-label">Your Name</label>
+            {{ form.name }}
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Your Email</label>
+            {{ form.email }}
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Your Feedback</label>
+            {{ form.message }}
+        </div>
+        <button type="submit" class="btn btn-dark text-info">Send</button>
+        <a href="/settings/" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

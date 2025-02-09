@@ -1,0 +1,38 @@
+{% extends "index.html" %}
+
+{% block title %}Settings{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-3">Settings</h1>
+    <hr>
+
+    <div class="container px-5 pt-3">
+        <h2 class="text-info">Profile</h2>
+
+        <div class="row mb-4">
+            <div class="col-md-3 text-secondary">
+                <h4>User Name</h4>
+            </div>
+            <div class="col-md-9">
+                <h4>{{ user.username }}</h4>
+            </div>
+
+            <div class="col-md-3 text-secondary">
+                <h4>Email</h4>
+            </div>
+            <div class="col-md-9">
+                <h4>{{ user.email }}</h4>
+            </div>
+        </div>
+
+        <hr class="w-50">
+
+        <div class="d-flex gap-3 flex-wrap">
+            <a href="/feedback/" class="btn btn-dark text-info">Feedback</a>
+            <a href="{% url 'logout' %}" class="btn btn-outline-danger">Logout</a>
+        </div>
+        
+    </div>
+</div>
+{% endblock %}

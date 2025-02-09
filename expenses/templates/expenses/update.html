@@ -1,0 +1,28 @@
+{% extends "index.html" %}
+
+{% block title %}Update{% endblock %}
+
+{% block content %}
+<h1 class="mb-3 pt-3 " >Update Expense</h1>
+      <hr>
+      <form method="post">
+        {% csrf_token %}
+        <div class="container px-5 pt-3 mt-5">
+            {% for field in form %}
+            <div class="row mb-4 align-items-center ">
+                <div class="col-md-3 text-start ">
+                    {{ field.label}}
+                </div>
+                <div class="col-md-7 text-secondary">
+                    {{ field }}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="d-grid gap-2 col-3 mx-auto mt-3">
+            <button class="btn btn-dark text-info rounded-5 mt-3" type="submit">Update</button>
+          </div>
+       
+    </form>
+  {% endblock %}

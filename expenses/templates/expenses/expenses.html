@@ -1,0 +1,65 @@
+{% extends "index.html" %}
+
+{% block title %}Expenses{% endblock %}
+
+{% block content %}
+<h1 class="mb-3 pt-3 ">Expenses</h1>
+            <hr>
+            <form method="GET" action="{% url 'expenses' %}" class=" row mb-3 gap-2 pt-2">
+                <div class="col-md-5 col-lg-3 ">
+                    <select name="category" class=" form-select bg-dark text-white" aria-label="Default select example">
+                        <option value="">All Categories</option>
+                        <option value="credit">Credit</option>
+                        <option value="debit">Debit</option>
+                    </select>
+                </div>
+
+                <div class="col-md-5 col-lg-3 ">
+                    <input type="month" name="date" class=" form-control bg-dark text-white" value="{% now 'Y-m' %}" />
+                </div>
+
+                <div class="col-md-2 col-lg-1 col-2  "><button type="submit" class=" btn btn-dark text-info">Filter</button>
+                </div>
+                <div class="col-md-2 col-lg-1 col-2  "><a href="{% url 'expenses' %}"
+                        class="btn btn-dark">Reset</a></div>
+
+            </form>
+
+            <div class="container px-1 pt-3">
+                <div class="scroll table-responsive rounded-4" style="max-height: 700px; overflow-y: scroll;">
+                    <table class="table table-dark ">
+                        <thead style="position: sticky; top: 0; font-size: larger;">
+                            <tr>
+                                <th>Name</th>
+                                <th>Amount</th>
+                                <th>Date</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for exp in data %}
+                            <tr>
+                                <td>{{ exp.name }}</td>
+                                <td>
+                                    {% if exp.category == 'credit' %}
+                                    <span class="text-success">+ {{ exp.amount }}</span> {# Green for credit #}
+                                    {% else %}
+                                    <span class="text-danger">- {{ exp.amount }}</span> {# Red for debit #}
+                                    {% endif %}
+                                </td>
+                                <td>{{exp.date}}</td>
+                                <td>
+                                    <a href="{% url 'delete' exp.id %}" class="mx-1 text-secondary"><i
+                                            class="fa-solid fa-trash"></i></a>
+                                    <a href="{% url 'update' exp.id %}" class="mx-1 text-secondary"><i
+                                            class="fa-solid fa-pen-to-square"></i></a>
+                                    <a href="{% url 'expense_detail' exp.id %}" class="ms-1 text-secondary"><i
+                                            class="fa-solid fa-circle-info"></i></a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+{% endblock %}
