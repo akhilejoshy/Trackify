@@ -31,46 +31,10 @@
             font-weight: 700;
             /* color: rgb(13, 202, 240); */
         }
-
-        #loading-screen {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            color: white;
-            font-size: 24px;
-            z-index: 9999;
-        }
-
-        #loading-screen i {
-            font-size: 50px;
-            margin-bottom: 10px;
-            animation: blink 1.2s infinite;
-        }
-
-        @keyframes blink {
-
-            0%,
-            100% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0.4;
-            }
-        }
     </style>
 </head>
 
 <body class="bg-black text-white">
-    <div id="loading-screen">
-        <i class="fa-brands fa-gg fa-4x"></i>
-    </div>
-
     <!-- Mobile Navbar -->
     <nav class="navbar navbar-dark bg-dark d-md-none">
         <div class="container-fluid">
@@ -158,21 +122,7 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            let elements = document.querySelectorAll("a, button, form");
-            elements.forEach(el => {
-                el.addEventListener("click", function () {
-                    document.getElementById("loading-screen").style.display = "flex";
-                });
-            });
 
-            // Hide loader when page is fully loaded
-            window.onload = function () {
-                document.getElementById("loading-screen").style.display = "none";
-            };
-        });
-    </script>
 
 </body>
 
