@@ -31,10 +31,38 @@
             font-weight: 700;
             /* color: rgb(13, 202, 240); */
         }
+
+        /* Full-screen overlay */
+        #loading-screen {
+            display: none;
+            /* Initially hidden */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            /* Dark overlay */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        /* FontAwesome icon styling */
+        #loading-screen i {
+            font-size: 60px;
+            /* Adjust size */
+            color: #fff;
+            /* Adjust color */
+        }
     </style>
 </head>
 
 <body class="bg-black text-white">
+    <div id="loading-screen">
+        <i class="fa-brands fa-gg fa-spin"></i>
+    </div>
 
     <!-- Mobile Navbar -->
     <nav class="navbar navbar-dark bg-dark d-md-none">
@@ -123,6 +151,21 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let elements = document.querySelectorAll("a, button, form");
+            elements.forEach(el => {
+                el.addEventListener("click", function() {
+                    document.getElementById("loading-screen").style.display = "flex";
+                });
+            });
+    
+            // Hide loader after page loads
+            window.onload = function() {
+                document.getElementById("loading-screen").style.display = "none";
+            };
+        });
+    </script>
 
 </body>
 

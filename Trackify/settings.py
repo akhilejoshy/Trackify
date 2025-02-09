@@ -125,9 +125,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'weather', 'static')  # This points to your static folder inside the weather app
-]
+
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
