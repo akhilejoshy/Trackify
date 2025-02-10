@@ -19,7 +19,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-    <title>{% block title %}{% endblock %}</title>
+    <title>Trackify</title>
 
     <style>
         /* *{
@@ -35,6 +35,7 @@
 </head>
 
 <body class="bg-black text-white">
+
     <!-- Mobile Navbar -->
     <nav class="navbar navbar-dark bg-dark d-md-none">
         <div class="container-fluid">
@@ -62,10 +63,10 @@
                     Home</a>
                 <a href="{% url 'addexpense' %}"
                     class="btn btn-dark text-start p-3 {% if request.resolver_match.url_name == 'addexpense' %} text-info {% endif %}"><i
-                        class="me-1 fa-solid fa-plus"></i> Add Expense</a>
+                        class="me-1 fa-solid fa-plus"></i> Add Transaction</a>
                 <a href="{% url 'expenses' %}" class="btn btn-dark text-start p-3 
                         {% if request.resolver_match.url_name == 'expenses' %} text-info {% endif %}">
-                    <i class="me-1 fa-solid fa-credit-card"></i> Expenses
+                    <i class="me-1 fa-solid fa-credit-card"></i> Transactions
                 </a>
 
                 <a href="{% url 'settings' %}"
@@ -96,10 +97,10 @@
                                 class="me-1 fa-solid fa-house "></i> Home</a>
                         <a href="{% url 'addexpense' %}"
                             class="btn btn-dark text-start p-3 {% if request.resolver_match.url_name == 'addexpense' %} text-info {% endif %}"><i
-                                class="me-1 fa-solid fa-plus"></i> Add Expense</a>
+                                class="me-1 fa-solid fa-plus"></i> Add Transaction</a>
                         <a href="{% url 'expenses' %}"
                             class="btn btn-dark text-start p-3 {% if request.resolver_match.url_name == 'expenses' %} text-info {% endif %}"><i
-                                class="me-1 fa-solid fa-credit-card"></i> Expenses</a>
+                                class="me-1 fa-solid fa-credit-card"></i> Transactions</a>
                         <a href="{% url 'settings' %}"
                             class="btn btn-dark text-start p-3 {% if request.resolver_match.url_name == 'settings' or request.resolver_match.url_name == 'feedback'%} text-info {% endif %}">
                             <i class="fa-solid fa-gear"></i> Settings</a>
@@ -122,7 +123,6 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
 
 </body>
 

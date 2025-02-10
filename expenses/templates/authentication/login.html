@@ -94,7 +94,7 @@
         <div class="card bg-dark text-white rounded-4 shadow-lg">
             <h2 class="text-center">Login</h2>
             <p class="fw-lighter text-danger text-center">{{ message }}</p>
-            <form action="" method="post" class="d-flex flex-column gap-3 mt-3" >
+            <form action="" method="post" class="d-flex flex-column gap-3 mt-3">
                 {% csrf_token %}
                 {% for i in form %}
                     <div>{{ i }}</div>
