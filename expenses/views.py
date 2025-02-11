@@ -21,7 +21,6 @@ class Registerview(View):
         form= UserForm(request.POST)
         if form.is_valid():
             User.objects.create_user(**form.cleaned_data)
-            # return render(request,'register.html',{'form':form})
             return redirect('login')
         return render(request,'authentication/register.html',{'form':form})
 
@@ -35,9 +34,9 @@ class Login(View):
         if form.is_valid():
             user_name = form.cleaned_data.get('username')
             pswd = form.cleaned_data.get('password')
-            user = authenticate(request, username=user_name, password=pswd)
+            user = authenticate(request, username=user_name, password=pswd)  
             if user:
-                login(request, user)
+                login(request, user)  
                 return redirect('home')
             else:
                 message = 'Invalid username or password'  
@@ -46,10 +45,11 @@ class Login(View):
 
         
 
-class Home(View):
+class Home(View): 
     def get(self, request):
         if not request.user.is_authenticated:  
-            return redirect('login')  
+            return redirect('login') 
+         
         today = datetime.date.today()
         default_date = f"{today.year}-{today.month:02d}"  
 
@@ -129,14 +129,13 @@ class Home(View):
     
 
 
-class AddExpense(View):
+class AddTransaction(View):
     def get(self, request):
         if not request.user.is_authenticated:  
             return redirect('login')  
         form = ExpenseForm()
-        data=ExpenseModel.objects.all()
 
-        return render(request, 'expenses/addexpense.html', {'form': form,'data':data})
+        return render(request, 'expenses/addexpense.html', {'form': form})
     
     
     def post(self, request):
@@ -150,15 +149,15 @@ class AddExpense(View):
 
 
 
-class ExpenseList(View):
+class TransactionList(View):
     def get(self, request):
         if not request.user.is_authenticated:  
             return redirect('login')  
 
         data = ExpenseModel.objects.filter(user=request.user).order_by('-date')  
 
-        category = request.GET.get('category', '')
-        date_filter = request.GET.get('date', '')
+        category = request.GET.get('category')
+        date_filter = request.GET.get('date')
 
         if category:
             data = data.filter(category=category)
@@ -214,7 +213,7 @@ class Support(View):
             return redirect('login')  
         return render(request,'expenses/support.html')
     
-class Logout(View):
+class Logout(View):   
     def get(self,request):
         logout(request)
         return redirect('login')
