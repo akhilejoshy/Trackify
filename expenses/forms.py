@@ -17,6 +17,13 @@ class ExpenseForm(forms.ModelForm):
     class Meta:
         model = ExpenseModel
         fields = ['name', 'amount', 'category', 'date', 'description']
+        labels = {
+            'name': 'Transaction Name',
+            'amount': 'Amount',
+            'category': 'Transaction Type',
+            'description': 'Additional Details',
+        }
+
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control bg-dark text-white '}),
             'amount': forms.NumberInput(attrs={'class': 'form-control bg-dark text-white'}),
