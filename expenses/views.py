@@ -80,7 +80,7 @@ class Home(View):
             )
             .annotate(
                 debit_percentage=ExpressionWrapper(
-                    (F('total_debit') * 100) / (F('total_credit') ),
+                    ((F('total_debit') * 100) / (F('total_credit')) ),
                     output_field=DecimalField()
                 ),
             )
@@ -112,7 +112,7 @@ class Home(View):
                 'month': str(item['month'].strftime('%Y-%m')),
                 'total_credit': float(item['total_credit']),
                 'total_debit': float(item['total_debit']),
-                'debit_percentage': float(item['debit_percentage']),
+                'debit_percentage': float((item['debit_percentage'] if item['debit_percentage'] else 100)),
             }
             for item in summary
         ]
