@@ -54,7 +54,7 @@
 ![Movie Details](screenshots/addtransaction.png)
 
 ### Transations
-![Add Review](screenshots/transations.png)
+![Add Review](screenshots/transactions.png)
 
 ---
 
